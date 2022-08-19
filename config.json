@@ -1,0 +1,26 @@
+{
+    "token": "XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX",
+    "guildId": "",
+    "channels":
+    {
+        "logs": "1234567890",
+        "join": "1234567890",
+        "leave": "1234567890" 
+    },
+    "roles": {
+        "admin": "1234567890",
+        "moderator": "1234567890"
+
+    },
+    "webhooks": {
+        "id": "1234567890",
+        "token": "1234567890"
+    },
+    "database": {
+        "host": "localhost",
+        "user": "root",
+        "password": "",
+        "name": "bot"
+    },
+    "prefix": "#"
+}
