@@ -1,5 +1,5 @@
-const { Client, GatewayIntentBits } = require('discord.js');
 const config = require('./config.json');
+const { Client, GatewayIntentBits, Partials } = require('discord.js');
 const client = new Client({
     intents: [
         GatewayIntentBits.DirectMessageReactions,
@@ -20,6 +20,14 @@ const client = new Client({
         GatewayIntentBits.GuildWebhooks,
         GatewayIntentBits.Guilds,
         GatewayIntentBits.MessageContent
+    ], partials: [
+        Partials.Channel, 
+        Partials.GuildMember, 
+        Partials.GuildScheduledEvent, 
+        Partials.Message, 
+        Partials.Reaction, 
+        Partials.ThreadMember, 
+        Partials.User
     ]
 });
 const mysql = require('mysql');
@@ -41,4 +49,27 @@ database.connect(function (err) {
     require(`./handlers/${handler}`)(client);
     console.log(`Załadowano event handler`);
 });
+
+client.on('ready', async client => {
+    if (config.database.CREATE_IF_NOT_EXISTS) {
+        //database.query(`CREATE TABLE IF NOT EXISTS bot (message text)`)
+    }
+})
+
+client.on('messageCreate', async message => {
+    //database.query(`INSERT INTO bot (message) VALUES ('${message.content}')`)
+    if (message.channel.type !== 'DM') {
+        const prefix = config.prefix
+        const args = message.content.slice(prefix.length).trim().split(' ');
+        const command = args.shift().toLowerCase();
+        if (command === "reload") {
+            if (message.member.roles.cache.has(config.roles.admin)) {
+                client.destroy()
+                client.login(config.token)
+                message.channel.send("Pomyślnie przeładowano bota!")
+            }
+        }
+    }
+})
+
 client.login(config.token);
