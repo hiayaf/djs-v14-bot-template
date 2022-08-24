@@ -20,7 +20,9 @@
         "host": "123456789012345678",
         "user": "root",
         "password": "",
-        "name": "bot"
+        "name": "bot",
+        "pool": 300000,
+        "ssl": false
     },
     "prefix": "#"
 }
