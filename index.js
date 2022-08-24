@@ -36,7 +36,8 @@ const database = mysql.createConnection({
     user: config.database.user,
     password: config.database.password,
     database: config.database.name,
-    pool: 30000,
+    pool: config.database.pool,
+    ssl: config.database.ssl
 });
 database.connect(function (err) {
     if (err) {
