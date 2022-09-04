@@ -72,5 +72,9 @@ client.on('messageCreate', async message => {
         }
     }
 })
-
+client.on('error', async err=> {
+    console.log('Wystąpił nieoczekiwany error:' + err)
+    client.destroy();
+    client.login(config.token);
+})
 client.login(config.token);
