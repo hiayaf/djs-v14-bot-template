@@ -1,6 +1,5 @@
-const { AttachmentBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, AttachmentBuilder } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('average-color')
