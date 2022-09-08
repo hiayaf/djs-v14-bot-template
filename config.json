@@ -24,5 +24,9 @@
         "pool": 300000,
         "ssl": false
     },
+    "auto_role": {
+       "account_time": 250,
+       "role": "1006594844434628648"
+    },
     "prefix": "#"
 }
