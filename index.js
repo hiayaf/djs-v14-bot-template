@@ -63,15 +63,17 @@ client.on('messageCreate', async message => {
         const prefix = config.prefix
         const args = message.content.slice(prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
-        if (command === "reload") {
-            if (message.member.roles.cache.has(config.roles.admin)) {
-                client.destroy()
-                client.login(config.token)
-                message.channel.send("Pomyślnie przeładowano bota!")
+        if (message.content.startsWith(config.prefix)) {
+            if (command === "reload") {
+                if (message.member.roles.cache.has(config.roles.admin)) {
+                    client.destroy()
+                    client.login(config.token)
+                    message.channel.send("Pomyślnie przeładowano bota!")
+                }
             }
         }
     }
-})
+});
 client.on('error', async err=> {
     console.log('Wystąpił nieoczekiwany error: ' + err)
     client.destroy();
