@@ -12,7 +12,7 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
         const count = interaction.options.getInteger('ilość');
         if (count < 101 && count > 0) {
-            await interaction.channel.bulkDelete(count, true).then(msg => { interaction.followUp({ content: `**Pomyślnie usunięto** \`${msg.size}\` **wiadomości.**`, ephemeral: true }); })
+            await interaction.channel.bulkDelete(count, true).then(msg => { interaction.followUp({ content: `**Pomyślnie usunięto \`${msg.size}\` wiadomości.**`, ephemeral: true }); })
         } else {
             await interaction.followUp({ content: `**Nieprawidłowa wartość...** \`${count}\``, ephemeral: true });
         };
