@@ -31,21 +31,8 @@ const client = new Client({
     ]
 });
 const mysql = require('mysql');
-const database = mysql.createConnection({
-    host: config.database.host,
-    user: config.database.user,
-    password: config.database.password,
-    database: config.database.name,
-    pool: config.database.pool,
-    ssl: config.database.ssl
-});
-database.connect(function (err) {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log('Pomyślnie połączono z bazą danych')
-    }
-});
+const database = mysql.createConnection({ host: config.database.host, user: config.database.user, password: config.database.password, database: config.database.name, pool: config.database.pool, ssl: config.database.ssl });
+database.connect(function (err) { if (err) { console.log(err) } else { console.log('Pomyślnie połączono z bazą danych'); } });
 ["events"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
     console.log(`Załadowano event handler`);
