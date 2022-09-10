@@ -1,5 +1,5 @@
 const config = require('./config.json');
-const { Client, GatewayIntentBits, Partials } = require('discord.js');
+const { Client, GatewayIntentBits, Partials, ChannelType } = require('discord.js');
 const client = new Client({
     intents: [
         GatewayIntentBits.DirectMessageReactions,
@@ -41,7 +41,7 @@ client.on('ready', async client => {
 
 client.on('messageCreate', async message => {
     //database.query(`INSERT INTO bot (message) VALUES ('${message.content}')`)
-    if (message.channel.type !== 'DM') {
+    if (message.channel.type !== ChannelType.DM) {
         const prefix = config.prefix
         const args = message.content.slice(prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
