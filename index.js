@@ -33,16 +33,11 @@ const client = new Client({
 const mysql = require('mysql');
 const database = mysql.createConnection({ host: config.database.host, user: config.database.user, password: config.database.password, database: config.database.name, pool: config.database.pool, ssl: config.database.ssl });
 database.connect(function (err) { if (err) { console.log(err) } else { console.log('Pomyślnie połączono z bazą danych'); } });
-["events"].forEach(handler => {
-    require(`./handlers/${handler}`)(client);
-    console.log(`Załadowano event handler`);
-});
-
 client.on('ready', async client => {
     if (config.database.CREATE_IF_NOT_EXISTS) {
         //database.query(`CREATE TABLE IF NOT EXISTS bot (message text)`)
     }
-})
+});
 
 client.on('messageCreate', async message => {
     //database.query(`INSERT INTO bot (message) VALUES ('${message.content}')`)
@@ -65,5 +60,9 @@ client.on('error', async err=> {
     console.log('Wystąpił nieoczekiwany error: ' + err)
     client.destroy();
     client.login(config.token);
-})
+});
+["events"].forEach(handler => {
+    require(`./handlers/${handler}`)(client);
+    console.log(`Załadowano event handler`);
+});
 client.login(config.token);
