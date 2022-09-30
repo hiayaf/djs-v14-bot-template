@@ -56,12 +56,12 @@ module.exports = {
 			.setFooter({ text: interaction.guild.name })
 			.setTimestamp()
 		const message = await interaction.reply({ embeds: [embed], ephemeral: false });
-		if (emoji) { message.react(emojis); };
-		if (emoji_1) { message.react(emoji_1); };
-		if (emoji_2) { message.react(emoji_2); };
-		if (emoji_3) { message.react(emoji_3); };
-		if (emoji_4) { message.react(emoji_4); };
-		if (emoji_5) { message.react(emoji_5); };
-		if (emoji_6) { message.react(emoji_6); };
+		if (emoji) return message.react(emojis);
+		if (emoji_1) return message.react(emoji_1);
+		if (emoji_2) return message.react(emoji_2);
+		if (emoji_3) return message.react(emoji_3);
+		if (emoji_4) return message.react(emoji_4);
+		if (emoji_5) return message.react(emoji_5);
+		if (emoji_6) return message.react(emoji_6);
 	}
 };
