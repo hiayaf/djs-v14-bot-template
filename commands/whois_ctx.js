@@ -4,7 +4,7 @@ module.exports = {
         .setName('user-info')
         .setType(ApplicationCommandType.Message),
     async execute(interaction) {
-        if (!user) { user = interaction.user } else { user = interaction.targetUser };
+        user = interaction.targetUser;
         const member = interaction.guild.members.cache.get(user.id);
         const flags = {
             DiscordEmployee: 'Pracownik Discorda',
