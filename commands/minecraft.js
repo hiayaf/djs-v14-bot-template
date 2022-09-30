@@ -20,10 +20,8 @@ module.exports = {
                 try {
                     body = JSON.parse(body);
                     if (err) return;
-                    var status = '**Wyłączony**';
-                    if (body.online) {
-                        status = '**Włączony**';
-                    };
+                    let status = '**Wyłączony**';
+                    if (body.online) return status = '**Włączony**';
                     const embed = new EmbedBuilder()
                         .setThumbnail(`https://mc-api.net/v3/server/favicon/${server}`)
                         .setTitle(`Status serwera ${server}`)
