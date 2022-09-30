@@ -4,7 +4,7 @@
 
 ## JavaScript 
 
-config.json
+./config.json
 ```json
 {
     "token": "XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX",
