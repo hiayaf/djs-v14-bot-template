@@ -2,7 +2,7 @@ const { ContextMenuCommandBuilder, ApplicationCommandType } = require('discord.j
 module.exports = {
     data: new ContextMenuCommandBuilder()
         .setName('user-info')
-        .setType(ApplicationCommandType.Message),
+	    .setType(ApplicationCommandType.User),
     async execute(interaction) {
         user = interaction.targetUser;
         const member = interaction.guild.members.cache.get(user.id);
