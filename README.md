@@ -1,10 +1,8 @@
-# A template bot with database support 
+## A template bot with database support 
+ v14 discord.js 
+ JavaScript 
 
-## v14 discord.js 
-
-## JavaScript 
-
-./config.json
+config.json
 ```json
 {
     "token": "XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX",
