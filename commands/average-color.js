@@ -11,6 +11,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply();
         const image = interaction.options.getAttachment('attachment');
+        if (!image.url.endsWith('.png') || !image.url.endsWith('.jpeg' || !image.url.endsWith('.jpg'))) return await interaction.editReply({ content: '**Nieprawidłowy rodzaj pliku**', ephemeral: true })
         const background = await Canvas.loadImage(image.url);
         const canvas = Canvas.createCanvas(background.width, background.height);
         const ctx = canvas.getContext && canvas.getContext('2d');
