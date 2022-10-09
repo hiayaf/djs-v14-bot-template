@@ -66,3 +66,6 @@ client.on('error', async err=> {
     console.log(`Załadowano event handler`);
 });
 client.login(config.token);
+
+
+module.exports.database = database;
