@@ -56,8 +56,9 @@ client.on('messageCreate', async message => {
         }
     }
 });
-client.on('error', async err=> {
-    console.log('Wystąpił nieoczekiwany error: ' + err)
+client.on('error', async err => {
+    console.log(colors.red('Wystąpił nieoczekiwany error:' + err));
+    console.debug(colors.red(err))
     client.destroy();
     client.login(config.token);
 });
