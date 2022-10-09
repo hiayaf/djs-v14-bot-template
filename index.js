@@ -63,7 +63,7 @@ client.on('error', async err => {
     client.destroy();
     client.login(config.token);
 });
-["events"].forEach(handler => {
+["events", "logs"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
     console.log(`Załadowano event handler`);
 });
