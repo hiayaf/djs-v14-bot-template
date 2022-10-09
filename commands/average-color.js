@@ -3,10 +3,15 @@ const { SlashCommandBuilder, AttachmentBuilder } = require("discord.js");
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('average-color')
-        .setDescription('average color'),
+        .setDescription('average color')
+        .addAttachmentOption(option => option
+            .setName('attachment')
+            .setDescription('image')
+            .setRequired(true)),
     async execute(interaction) {
         await interaction.deferReply();
-        const background = await Canvas.loadImage('https://cdn.discordapp.com/attachments/1018882936105353306/1028483222914486412/average-color.png');
+        const image = interaction.options.getAttachment('attachment');
+        const background = await Canvas.loadImage(image.url);
         const canvas = Canvas.createCanvas(background.width, background.height);
         const ctx = canvas.getContext && canvas.getContext('2d');
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
