@@ -1,5 +1,6 @@
 const config = require('./config.json');
 const { Client, GatewayIntentBits, Partials, ChannelType } = require('discord.js');
+const colors = require('colors')
 const client = new Client({
     intents: [
         GatewayIntentBits.DirectMessageReactions,
