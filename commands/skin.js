@@ -1,36 +1,33 @@
+const axios = require('axios');
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('skin')
-        .setDescription('Pokazuje skin gracza')
+        .setDescription('Shows a Minecraft player\'s skin')
         .addStringOption(option =>
             option.setName('nick')
-                .setDescription('Wpisz nick osoby w minecraft')
+                .setDescription('Enter a Minecraft player\'s username')
                 .setRequired(true)),
     async execute(interaction) {
-        var request = require('request');
-        const username = interaction.options.getString('nick');
-        var url = 'https://api.mojang.com/users/profiles/minecraft/' + username;
-        request(url, function (err, response, body) {
-            try {
-                body = JSON.parse(body);
-            } catch (error) {
-                console.log(error);
-            }
-            if (!err) {
-                if(body.id!=undefined) {
-                    const embed = new EmbedBuilder()
-                    .setImage(`https://visage.surgeplay.com/frontfull/${body.id}`)
-                    .setDescription(`[**Link do skórki**](https://visage.surgeplay.com/skin/${body.id}.png)`)
-                    .setTitle(`Skin ${body.name}`)
-                    .setFooter({ text: `${body.name}`, iconURL: `https://visage.surgeplay.com/face/${body.id}` })
+        try {
+            const uuid = interaction.options.getString('nick');
+            const { data } = await axios.get(`https://api.mojang.com/users/profiles/minecraft/${uuid}`);
+            const { id, name } = data;
+            if (id) {
+                const embed = new EmbedBuilder()
+                    .setImage(`https://visage.surgeplay.com/full/1024/${id}?y=-37`)
+                    .setDescription(`[**Skin link**](https://visage.surgeplay.com/skin/${id}.png)`)
+                    .setTitle(`Skin for ${name}`)
+                    .setFooter({ text: name, iconURL: `https://visage.surgeplay.com/face/${id}` })
                     .setTimestamp()
-                    .setColor('DARK_GREEN');
-                interaction.reply({ embeds: [embed], ephemeral: false });
-                } else {
-                    interaction.reply({ content: `**Wystąpił błąd podczas uzyskiwania skórki ${username}**`, ephemeral: true });
-                };
-            };
-        });
+                    .setColor('DARK_GREEN')
+                await interaction.reply({ embeds: [embed], ephemeral: false });
+            } else {
+                await interaction.reply({ content: `Error getting skin for ${uuid}`, ephemeral: true });
+            }
+        } catch (error) {
+            await interaction.reply({ content: 'An error occurred', ephemeral: true });
+        }
     }
 };
