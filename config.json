@@ -1,16 +1,14 @@
 {
     "token": "XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX-XXX",
     "guildId": "",
-    "channels":
-    {
+    "channels": {
         "logs": "123456789012345678",
         "join": "123456789012345678",
-        "leave": "123456789012345678" 
+        "leave": "123456789012345678"
     },
     "roles": {
         "admin": "123456789012345678",
         "moderator": "123456789012345678"
-
     },
     "webhooks": {
         "id": "123456789012345678",
@@ -26,8 +24,12 @@
         "port": 3306
     },
     "auto_role": {
-       "account_time": 250,
-       "role": "123456789012345678"
+        "account_time": 250,
+        "role": "123456789012345678"
+    },
+    "economy": {
+        "xp_per_msg": 15,
+        "announcement_channel": "1082757477453529198"
     },
     "api_keys": {
         "NASA": "2MwlWE6j1CcjFGTwlrZ6laTRzOV1nDPgF9fzT9tc",
