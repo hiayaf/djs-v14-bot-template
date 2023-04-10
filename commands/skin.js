@@ -21,7 +21,7 @@ module.exports = {
                     .setTitle(`Skin for ${name}`)
                     .setFooter({ text: name, iconURL: `https://visage.surgeplay.com/face/${id}` })
                     .setTimestamp()
-                    .setColor('DARK_GREEN')
+                    .setColor('DarkGreen')
                 await interaction.reply({ embeds: [embed], ephemeral: false });
             } else {
                 await interaction.reply({ content: `Error getting skin for ${uuid}`, ephemeral: true });
