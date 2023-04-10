@@ -23,7 +23,7 @@ config.json
         "token": "123456789012345678"
     },
     "database": {
-        "host": "123456789012345678",
+        "host": "localhost",
         "user": "root",
         "password": "",
         "name": "bot",
