@@ -6,7 +6,6 @@ const client = new Client({
         GatewayIntentBits.DirectMessageReactions,
         GatewayIntentBits.DirectMessageTyping,
         GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.GuildBans,
         GatewayIntentBits.GuildEmojisAndStickers,
         GatewayIntentBits.GuildIntegrations,
         GatewayIntentBits.GuildInvites,
@@ -32,7 +31,7 @@ const client = new Client({
     ]
 });
 const mysql = require('mysql');
-const database = mysql.createConnection({ host: config.database.host, user: config.database.user, password: config.database.password, database: config.database.name, pool: config.database.pool, ssl: config.database.ssl });
+const database = mysql.createConnection({ host: config.database.host, user: config.database.user, password: config.database.password, database: config.database.name, pool: config.database.pool, ssl: config.database.ssl, port: config.database.port });
 database.connect(function (err) { if (err) { console.log(err) } else { console.log('Pomyślnie połączono z bazą danych'); } });
 client.on('ready', async client => {
     if (config.database.CREATE_IF_NOT_EXISTS) {
