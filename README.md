@@ -23,16 +23,21 @@ config.json
         "token": "123456789012345678"
     },
     "database": {
-        "host": "localhost",
+        "host": "123456789012345678",
         "user": "root",
         "password": "",
         "name": "bot",
         "pool": 300000,
-        "ssl": false
+        "ssl": false,
+        "port": 3306
     },
     "auto_role": {
        "account_time": 250,
-       "role": "1006594844434628648"
+       "role": "123456789012345678"
+    },
+    "api_keys": {
+        "NASA": "2MwlWE6j1CcjFGTwlrZ6laTRzOV1nDPgF9fzT9tc",
+        "FORTNITE": "123456789012345678123456789012345678"
     },
     "prefix": "#"
 }
